@@ -18,18 +18,17 @@ function editUser() {
         for (let i = 0; i < formEdit.roles.options.length; i++) {
             if (formEdit.roles.options[i].selected) {
                 editUserRoles.push({
-                    id: formEdit.roles.value,
+                    id: formEdit.roles.options[i].value,
                     name: "ROLE_" + formEdit.roles.options[i].text
                 });
             }
         }
-        fetch("admin/api/" + formEdit.email.value, {
+        fetch("admin/api/" + formEdit.id.value, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                id: formEdit.id.value,
                 firstName: formEdit.firstName.value,
                 lastName: formEdit.lastName.value,
                 age: formEdit.age.value,

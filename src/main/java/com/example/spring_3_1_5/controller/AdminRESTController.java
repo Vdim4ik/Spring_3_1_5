@@ -37,9 +37,9 @@ public class AdminRESTController {
         return ResponseEntity.ok(user);
     }
 
-    @PatchMapping("/{email}")
-    public ResponseEntity<User> updateUser(@PathVariable("email") String email, @RequestBody User user){
-        userService.updateUser(email, user);
+    @PatchMapping("/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody User user){
+        userService.updateUser(id, user);
         return ResponseEntity.ok(user);
     }
 

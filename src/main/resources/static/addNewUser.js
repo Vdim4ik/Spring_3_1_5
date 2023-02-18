@@ -7,7 +7,7 @@ function addNewUser() {
         for (let i = 0; i < formNew.roles.options.length; i++) {
             if (formNew.roles.options[i].selected) {
                 newUserRoles.push({
-                    id: formNew.roles.value,
+                    id: formNew.roles.options[i].value,
                     name: "ROLE_" + formNew.roles.options[i].text
                 });
             }
@@ -18,18 +18,20 @@ function addNewUser() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
+            body:
+                JSON.stringify({
                 email: formNew.email.value,
                 firstName: formNew.firstName.value,
                 lastName: formNew.lastName.value,
                 age: formNew.age.value,
                 password: formNew.password.value,
                 roles: newUserRoles
-            })
+                })
         }).then(() => {
             getUserTable();
             $('#all-tab').click();
         });
+
     });
 }
 

@@ -40,8 +40,8 @@ public class UserServiceImp implements UserService {
 
     @Override
     @Transactional
-    public void updateUser(String email, User updateUser) {
-        User user = userRepository.findByEmail(email);
+    public void updateUser(long id, User updateUser) {
+        User user = userRepository.getById(id);
         user.setFirstName(updateUser.getFirstName());
         user.setLastName(updateUser.getLastName());
         user.setEmail(updateUser.getEmail());
